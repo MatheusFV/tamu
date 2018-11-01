@@ -10,7 +10,7 @@ export const Home = ({text}) => (
 
 const styles = {
     container: {
-        display: "Flex",
+        display: "flex",
         justifyContent: "center",
         alignContent: "center",
         padding: 20,
