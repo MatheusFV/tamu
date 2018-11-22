@@ -15,7 +15,7 @@ export default class SplashScreen extends React.PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <Text>This is my splash!</Text>
+                <Text>TRAMU</Text>
             </View>
         );
     }
