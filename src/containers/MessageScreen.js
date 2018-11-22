@@ -94,7 +94,7 @@ class MessageScreen extends React.PureComponent {
                                     onValueChange={this.onValueChange.bind(this)}
                                 >
                                     { ports.map((value, index) => (
-                                        <Picker.Item label={value} key={index} value={index}/>
+                                        <Picker.Item label={value.port} key={index} value={index}/>
                                     ))}
                                 </Picker>
                             </Form>
@@ -108,7 +108,7 @@ class MessageScreen extends React.PureComponent {
                         <Button block primary style={styles.button} onPress={() => {
                             if (this.state.text && this.state.selected
                                 && ports.length > this.state.selected) {
-                                this.props.sendMessage(this.state.text, ports[this.state.selected])
+                                this.props.sendMessage(this.state.text, ports[this.state.selected].port)
                                 this.setState({text: ''})
                             } else {
                                 alert("Digite uma mensagem e escolha um dispositivo, por favor.")
