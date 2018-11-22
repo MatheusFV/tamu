@@ -106,9 +106,13 @@ class MessageScreen extends React.PureComponent {
                             />
                         </View>
                         <Button block primary style={styles.button} onPress={() => {
-                            if (this.state.text && this.state.selected
+                            console.log('ports', ports.length)
+                            console.log('text', this.state.text)
+                            console.log('selected', this.state.selected)
+                            console.log(ports.length > this.state.selected)
+                            if (this.state.text && this.state.selected !== undefined
                                 && ports.length > this.state.selected) {
-                                this.props.sendMessage(this.state.text, ports[this.state.selected].port)
+                                this.props.sendMessage(this.state.text, ports[this.state.selected])
                                 this.setState({text: ''})
                             } else {
                                 alert("Digite uma mensagem e escolha um dispositivo, por favor.")

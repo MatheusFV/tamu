@@ -45,9 +45,19 @@ export const getPorts = () => async(dispatch) => {
     })
 }
 
+function toHex(str) {
+    var hex = '';
+    for(var i=0;i<str.length;i++) {
+        hex += ''+str.charCodeAt(i).toString(16);
+    }
+    return hex;
+}
+
 export const sendMessage = (message, port) => async(dispatch) => {
+    const portUrl = `${port.service.addresses[0]}:${port.port}`
+    const encodedMessage = toHex(message)
     dispatch(sendMessageStart())
-    request.post(`${CONSTANTS.baseUr}/message`).send({message, port}).end((err, res) => {
+    request.post(`${CONSTANTS.baseUr}/message`).send({message: encodedMessage, port: portUrl}).end((err, res) => {
         if (err) dispatch(sendMessageError(err))
         dispatch(sendMessageSuccess(res.body))
     })
